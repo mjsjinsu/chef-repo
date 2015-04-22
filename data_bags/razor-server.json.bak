@@ -1,0 +1,34 @@
+{
+"name": "razor-server.wlstn.com",
+"chef_environment": "_default",
+"normal": {
+"dhcp": {
+"parameters": {
+"next-server": "10.13.31.103"
+},
+"networks": [ "10-13-31-0_24" ],
+"networks_bag": "dhcp_networks"
+},
+"razor": {
+"bind_address": "10.13.31.103",
+"images": {
+"razor-mk": {
+"type": "mk",
+"url": "https://github.com/downloads/puppetlabs/Razor-Microkernel/rz_mk_prod-image.0.9.3.0.iso",
+"action": "add"
+},
+"precise64": {
+"url": "http://10.0.1.254/iso/ubuntu-12.04.1-server-amd64.iso",
+"version": "12.04",
+"action": "add"
+}
+}
+},
+"tags": []
+},
+"run_list": [
+"recipe[razor]",
+"recipe[dhcp::server]"
+]
+
+}

@@ -1,0 +1,19 @@
+{
+	"id": "baremetal_Test",
+	"nodes":{
+		"baremetal_centos":{ 
+					"nodename": "centostest",
+					"if_bond" : "yes",
+					"ip": "192.168.1.100",
+					"netmask": "255.255.255.0",
+					"gateway": "192.168.1.254",
+					"bond_info":{
+						"bondname": "bond0",
+						"bond_interface1": "eth2", 
+						"bond_interface2": "eth3" 
+					}
+				}
+		}
+			
+}
+

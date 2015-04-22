@@ -1,0 +1,46 @@
+{
+"name": "razor-server.wlstn.com",
+"chef_environment": "_default",
+"normal": {
+"dhcp": {
+"parameters": {
+"next-server": "10.13.31.103"
+},
+"networks": [ "10-13-31-0_24" ],
+"networks_bag": "dhcp_networks",
+"groups": [ "10-13-31-100" ],
+"groups_bag": "dhcp_groups"
+},
+"razor": {
+"bind_address": "10.13.31.103",
+"images": {
+"razor-mk": {
+"type": "mk",
+"url": "https://github.com/downloads/puppetlabs/Razor-Microkernel/rz_mk_prod-image.0.9.3.0.iso",
+"action": "add"
+},
+"precise64": {
+"url": "http://10.0.1.254/iso/ubuntu-12.04.1-server-amd64.iso",
+"version": "12.04",
+"action": "add"
+},
+"Ubuntu14_04": {
+"url": "http://10.0.1.247/mjs/ubuntu-14.04-server-amd64.iso",
+"version": "14.04",
+"action": "add"
+},
+"CentOS63_64bit": {
+"url": "http://10.0.1.247/mjs/CentOS-6.3-x86_64-bin-DVD1.iso",
+"version": "6.3",
+"action": "add"
+}
+}
+},
+"tags": []
+},
+"run_list": [
+"recipe[razor]",
+"recipe[dhcp::server]"
+]
+
+}
