@@ -1,0 +1,46 @@
+#!/bin/bash
+
+function mkmodprobe {
+
+if [ -d /etc/modprobe.d ]; then
+        echo "alias <%= @bondname %> bonding" >> /etc/modprobe.d/bonding.conf
+else # Assume RHEL5
+        echo -n "alias <%= @bondname %> bonding" >> /etc/modprobe.conf
+        echo "options <%= @bondname %> mode=1 miimon=100" >> /etc/modprobe.conf
+fi
+}
+
+function mkbond {
+
+modprobe bonding
+
+echo "GATEWAY=<%= @gateway %>" >> /etc/sysconfig/network
+
+cat << EOF1 >/etc/sysconfig/network-scripts/ifcfg-<%= @bondname %>
+DEVICE=<%= @bondname %>
+BOOTPROTO=static
+ONBOOT=yes
+IPADDR=<%= @ip %>
+NETMASK=<%= @netmask %>
+USERCTL=no
+BONDING_OPTS="mode=1 miimon=100"
+EOF1
+
+for i in <%= @bond_interface1 %> <%= @bond_interface2 %>
+do
+sed -i /ONBOOT/s/no/yes/ /etc/sysconfig/network-scripts/ifcfg-$i
+sed -i /NM_CON/s/yes/no/ /etc/sysconfig/network-scripts/ifcfg-$i
+sed -i /BOOTPROTO/s/static/none/ /etc/sysconfig/network-scripts/ifcfg-$i
+cat >> /etc/sysconfig/network-scripts/ifcfg-$i <<IFS
+MASTER=<%= @bondname %>
+SLAVE=yes
+USERCTL=no
+IFS
+done
+
+}
+
+mkmodprobe
+mkbond
+
+service network restart

@@ -1,0 +1,16 @@
+{
+      "id": "10-12-18-100",
+      "parameters": [
+        "use-host-decl-names on"
+      ],
+      "hosts": {
+        "Baremetal_1": {
+          "mac": "60:EB:69:3E:6F:36",
+          "ip": "10.12.18.1"
+        },
+        "Baremetal_2": {
+          "mac": "60:EB:69:3E:6B:BA",
+          "ip": "10.12.18.2"
+        }
+      }
+}

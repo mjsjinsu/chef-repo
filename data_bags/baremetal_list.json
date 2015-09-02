@@ -1,0 +1,43 @@
+{
+	"id": "baremetal_list",
+	"nodes":{
+		"baremetal_centos":{ 
+					"hostname": "baremetal_centos",
+					"if_bond" : "yes",
+					"ip": "192.168.1.100",
+					"netmask": "255.255.255.0",
+					"gateway": "10.31.31.254",
+					"bond_info":{
+						"bondname": "bond0",
+						"bond_interface1": "eth2", 
+						"bond_interface2": "eth3" 
+					}
+				},
+		"Baremetal_1":{
+					"hostname": "Baremetal_cnode01",
+                                        "if_bond" : "yes",
+                                        "ip": "172.27.0.100",
+                                        "netmask": "255.255.255.0",
+                                        "gateway": "10.12.18.254",
+                                        "bond_info":{
+                                                "bondname": "bond0",
+                                                "bond_interface1": "eth2",
+                                                "bond_interface2": "eth3"
+                                        }
+				},
+		"Baremetal_2":{
+                                        "hostname": "Baremetal_cnode02",
+                                        "if_bond" : "yes",
+                                        "ip": "172.27.0.200",
+                                        "netmask": "255.255.255.0",
+                                        "gateway": "10.12.18.254",
+                                        "bond_info":{
+                                                "bondname": "bond0",
+                                                "bond_interface1": "eth2",
+                                                "bond_interface2": "eth3"
+                                        }
+                                }
+
+                }	
+}
+

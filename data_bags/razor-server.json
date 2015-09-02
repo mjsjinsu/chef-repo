@@ -6,9 +6,9 @@
 "parameters": {
 "next-server": "10.13.31.103"
 },
-"networks": [ "10-13-31-0_24" ],
+"networks": [ "10-13-31-0_24", "10-12-18-0_24" ],
 "networks_bag": "dhcp_networks",
-"groups": [ "10-13-31-100" ],
+"groups": [ "10-13-31-100", "10-12-18-100" ],
 "groups_bag": "dhcp_groups"
 },
 "razor": {
@@ -27,6 +27,11 @@
 "Ubuntu14_04": {
 "url": "http://10.0.1.247/mjs/ubuntu-14.04-server-amd64.iso",
 "version": "14.04",
+"action": "add"
+},
+"CentOS58_64bit": {
+"url": "http://10.0.1.247/mjs/CentOS-5.8-x86_64-bin-DVD-1of2.iso",
+"version": "5.8",
 "action": "add"
 },
 "CentOS63_64bit": {
