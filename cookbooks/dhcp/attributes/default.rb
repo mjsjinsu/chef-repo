@@ -7,7 +7,8 @@ default[:dhcp][:failover_params][:port] = 647
 default[:dhcp][:failover_params][:peer_port] = 647
 default[:dhcp][:failover_params][:auto_partner_down] = 0
 
-default[:dhcp][:allows] = ['booting', 'bootp', 'unknown-clients']
+default[:dhcp][:allows] = ['booting', 'bootp']
+default[:dhcp][:deny] = ['unknown-clients']
 
 # these are the arrays that dispatch to bags or attributes for actual data
 default[:dhcp][:hosts] = []
