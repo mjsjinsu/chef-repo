@@ -7,6 +7,10 @@ set vendor-string = option vendor-class-identifier;
 allow <%= allow %>;
 <% end -%>
 
+<% @deny.each do |deny| -%>
+deny <%= deny %>;
+<% end -%>
+
 <% @parameters.sort.each do |key, value| -%>
 <%= key %> <%= value %>;
 <% end -%>
